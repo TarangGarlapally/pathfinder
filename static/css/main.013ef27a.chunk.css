@@ -1,0 +1,2 @@
+.gridCube{height:25px;width:25px;border:1px solid grey;float:left;cursor:pointer;transition:.1s ease}.gridCube[type=blank]:hover{background-color:#000}.green{background-color:green}.red{background-color:red}.gridOut{float:left}.grid{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;align-items:center}.sourceCube{background-color:green}.destinationCube{background-color:red}.wallCube{background-color:#000}
+/*# sourceMappingURL=main.013ef27a.chunk.css.map */
