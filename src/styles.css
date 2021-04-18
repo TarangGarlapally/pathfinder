@@ -1,8 +1,14 @@
 .gridCube {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
   border: 1px solid grey;
   float: left;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+
+.gridCube:hover {
+  background-color: black;
 }
 
 .green {
@@ -18,4 +24,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.sourceCube {
+  background-color: green;
+}
+
+.destinationCube {
+  background-color: red;
+}
+
+.wallCube {
+  background-color: black;
 }

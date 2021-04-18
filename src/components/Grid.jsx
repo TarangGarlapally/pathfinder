@@ -16,7 +16,7 @@ export default function Grid(){
 
     return <div className="grid">
         {grid_list.map((item, index)=>{
-            return <div className="gridOut">{item.map((inner_item, inner_index)=><GridCube key={inner_index} color={index === 19 && inner_index === 39?"green":""}/>)}</div>
+            return <div className="gridOut" key={index}>{item.map((inner_item, inner_index)=><GridCube key={inner_index} color={index === 19 && inner_index === 39?"green":""}/>)}</div>
         })}
     </div>
 }
