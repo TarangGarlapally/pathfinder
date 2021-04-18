@@ -4,27 +4,16 @@ import GridCube from "./GridCube";
 export default function Grid(){
 
     const grid_list = [];
-    let c = 0;
     for (let i = 0; i < 20; i++) {
         let l = [];
         for (let j = 0; j < 40; j++) {
-            console.log(c);
             let color = "white";
             let type = "blank";
-            if(c === 0){
-                color = "green";
-                type = "source";
-            }
-            if(c === 799){
-                color = "red";
-                type = "destination";
-            }
             l.push({
-                id: c,
+                id: i.toString()+" "+j.toString(),
                 color: color,
                 type: type
             });
-            c += 1;
         }
         grid_list.push(l);
     }
