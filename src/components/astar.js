@@ -1,10 +1,20 @@
 
-function drawPath(item){
+function drawPath(closed){
+    var item = closed[closed.length - 1];
     if(item.p === null){
         return;
     }
-    document.getElementById((item.id[0]).toString()+" "+(item.id[1]).toString()).style.backgroundColor = "blue";
-    drawPath(item.p);
+    while(item.p !== null){
+        for(let i = 0; i<closed.length; i++){
+            if(closed[i].id == item.p){
+                item = closed[i];
+                break;
+            }
+        }
+        if(item.p===null)
+        break;
+        document.getElementById((item.id[0]).toString()+" "+(item.id[1]).toString()).style.backgroundColor = "blue";
+    }
 }
 
 export default function astar(sloc, dloc){
@@ -51,6 +61,7 @@ export default function astar(sloc, dloc){
     while(open.length !== 0){
         var id = smallest(open);
         var q = open[id];
+        console.log(q);
         open.splice(id, 1);
         var dx = [0,0,1,1,1,-1,-1,-1];
         var dy = [1,-1,0,1,-1,0,1,-1];
@@ -65,7 +76,7 @@ export default function astar(sloc, dloc){
             
             let g = q.g + 1;
             let h = Math.sqrt(Math.pow(q.id[0]+dx[k] - parseInt(dloc[0]), 2) + Math.pow(q.id[1]+dy[k] - parseInt(dloc[1]),2));
-            temp = {f: g+h, g: g, h:h, id: [q.id[0]+dx[k], q.id[1]+dy[k]], p: q};
+            temp = {f: g+h, g: g, h:h, id: [q.id[0]+dx[k], q.id[1]+dy[k]], p: q.id};
             
             if(q.id[0]+dx[k] === parseInt(dloc[0]) && q.id[1]+dy[k] === parseInt(dloc[1])){    
                 flag = true;
@@ -80,6 +91,7 @@ export default function astar(sloc, dloc){
             else{
                 if(q.id[0]+dx[k]!==parseInt(sloc[0]) && q.id[1] + dy[k]!== parseInt(sloc[1]))
                     document.getElementById((q.id[0]+dx[k]).toString()+" "+(q.id[1]+dy[k]).toString()).style.backgroundColor = "orange";
+                if(!open.includes(temp))
                 open.push(temp);
             }
         }
@@ -91,7 +103,7 @@ export default function astar(sloc, dloc){
         }
     }
 
-    drawPath(closed[closed.length - 1].p);
+    drawPath(closed);
 
     return closed;
 }
