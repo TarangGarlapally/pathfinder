@@ -12,7 +12,8 @@ export default function Header(){
             alert("Set both source and destination")
         }
         else{
-            document.getElementById("res").innerHTML = astar(sloc, dloc);
+            var x = astar(sloc, dloc);
+            console.log(x);
         }
     }
 
